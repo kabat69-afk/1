@@ -135,7 +135,7 @@ for dzial, pracownicy in dzialy.items():
             # (praca=1 i start≤9) => b
             model.AddBoolOr([praca[dzial,p,d].Not(), le9[dzial,p,d].Not(), b])
             obecni9.append(b)
-        model.Add(sum(obecni9) >= 1)  # Zmieniono z 2 na 1 osobę
+        model.Add(sum(obecni9) >= 1)  # Min 1 osoba (zmieniono z 2 dla elastyczności - łatwiej znaleźć rozwiązanie)
 
 # ======================
 # ZMIENNE POMOCNICZE: KONIEC = 20
@@ -164,7 +164,7 @@ for dzial, pracownicy in dzialy.items():
             # (praca=1 i koniec=20) => b
             model.AddBoolOr([praca[dzial,p,d].Not(), koniec20[dzial,p,d].Not(), b])
             obecni20.append(b)
-        model.Add(sum(obecni20) >= 1)  # Zmieniono z 2 na 1 osobę
+        model.Add(sum(obecni20) >= 1)  # Min 1 osoba (zmieniono z 2 dla elastyczności - łatwiej znaleźć rozwiązanie)
 
 # ======================
 # SOLVER
